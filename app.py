@@ -18,7 +18,9 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    output = round(prediction[0], 10)
+    output = round(prediction[0], 2)
+    if output>= 0.70:
+        return ("contact doctor immeadiately")
 
     return render_template('index.html', prediction_text='Affecting with heart disease rate : {}'.format(output))
 
